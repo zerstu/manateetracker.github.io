@@ -70,18 +70,6 @@
 					zoom: 19,
 					mapTypeId: google.maps.MapTypeId.HYBRID
 				});
-				
-				var path = new google.maps.Polyline({
-					path: pathCoordinates,
-					geodesic: true,
-					strokeColor: '#FF0000',
-					strokeOpacity: 1.0,
-					strokeWeight: 2
-				});
-				
-				var pathCoordinates = path.getPath();
-				
-				path.setMap(map);
 			}
 			$(function(){
 				var accessToken;
@@ -168,8 +156,20 @@
 								var lat = parseFloat(gpslocation[0]);
 								var lon = parseFloat(gpslocation[1]);
 								var mylocation=new google.maps.LatLng(lat, lon);
+								
+								var path = new google.maps.Polyline({
+									path: pathCoordinates,
+									geodesic: true,
+									strokeColor: '#FF0000',
+									strokeOpacity: 1.0,
+									strokeWeight: 2
+								});
+
+								var pathCoordinates = path.getPath();
 								pathCoordinates.push(mylocation);
 								poly.setPath(path);
+								path.setMap(map);
+								
 								$('#latlon').html(gpslocation[0] + ' : ' + gpslocation[1]);
 								// clearMarkers();
 								marker = new google.maps.Marker({
