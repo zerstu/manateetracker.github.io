@@ -157,6 +157,8 @@
 								var lon = parseFloat(gpslocation[1]);
 								var mylocation=new google.maps.LatLng(lat, lon);
 								
+								var pathCoordinates = [];
+								
 								var path = new google.maps.Polyline({
 									path: pathCoordinates,
 									geodesic: true,
@@ -165,7 +167,7 @@
 									strokeWeight: 2
 								});
 
-								var pathCoordinates = path.getPath();
+								pathCoordinates = path.getPath();
 								pathCoordinates.push(mylocation);
 								path.setPath(pathCoordinates);
 								
