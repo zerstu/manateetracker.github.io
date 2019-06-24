@@ -70,9 +70,7 @@
 					zoom: 19,
 					mapTypeId: google.maps.MapTypeId.HYBRID
 				});
-
-				var pathCoordinates = [];
-
+				
 				var path = new google.maps.Polyline({
 					path: pathCoordinates,
 					geodesic: true,
@@ -80,7 +78,9 @@
 					strokeOpacity: 1.0,
 					strokeWeight: 2
 				});
-
+				
+				var pathCoordinates = path.getPath();
+				
 				path.setMap(map);
 			}
 			$(function(){
@@ -169,6 +169,7 @@
 								var lon = parseFloat(gpslocation[1]);
 								var mylocation=new google.maps.LatLng(lat, lon);
 								pathCoordinates.push(mylocation);
+								poly.setPath(path);
 								$('#latlon').html(gpslocation[0] + ' : ' + gpslocation[1]);
 								// clearMarkers();
 								marker = new google.maps.Marker({
