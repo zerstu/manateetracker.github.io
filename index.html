@@ -167,7 +167,7 @@
 
 								var pathCoordinates = path.getPath();
 								pathCoordinates.push(mylocation);
-								poly.setPath(path);
+								path.setPath(pathCoordinates);
 								path.setMap(map);
 								
 								$('#latlon').html(gpslocation[0] + ' : ' + gpslocation[1]);
